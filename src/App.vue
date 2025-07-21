@@ -38,11 +38,7 @@ onUnmounted(() => {
     </RouterLink>
   </nav>
   <main>
-    <router-view v-slot="{ Component }">
-      <transition name="fade">
-        <component :is="Component" />
-      </transition>
-    </router-view>
+    <router-view />
   </main>
 </template>
 

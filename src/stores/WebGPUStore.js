@@ -1,19 +1,24 @@
 import { defineStore } from 'pinia'
-import { ref, shallowRef } from 'vue'
+import { computed, ref, shallowRef } from 'vue'
 
 export const useWebGPUStore = defineStore('webgpu', () => {
     const gpudevice = shallowRef(null);
-    const isWebGPUSupported = ref(false);
+
+    const isWebGPUSupported = computed(() => {
+        return gpudevice.value instanceof GPUDevice
+    })
 
     async function initWebGPU() {
         try {
             const adapter = await navigator.gpu?.requestAdapter();
             const device = await adapter?.requestDevice();
-            if (adapter && device) {
+
+            // 直接检查对象是否存在，而不是使用 isEmpty
+            const hasAdapter = adapter !== null && adapter !== undefined;
+            const hasDevice = device !== null && device !== undefined;
+
+            if (hasAdapter && hasDevice) {
                 gpudevice.value = device;
-                isWebGPUSupported.value = true;
-            } else {
-                isWebGPUSupported.value = false;
             }
         } catch (error) {
             console.error('WebGPU 初始化失败:', error);

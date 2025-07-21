@@ -1,8 +1,10 @@
 <template>
-    <canvas ref="canvasRef"></canvas>
+    <div>
+        <canvas ref="canvasRef"></canvas>
+    </div>
 </template>
 <script setup>
-import HelloWebGPUWgsl from '@/assets/HelloWebGPU.wgsl?raw';
+import HelloWebGPUwgsl from '@/assets/HelloWebGPU.wgsl?raw';
 import { onMounted, ref } from 'vue';
 import { useWebGPUStore } from '@/stores/WebGPUStore';
 import { storeToRefs } from 'pinia'
@@ -25,7 +27,7 @@ onMounted(() => {
 
         const module = device.createShaderModule({
             label: 'our hardcoded red triangle shaders',
-            code: HelloWebGPUWgsl,
+            code: HelloWebGPUwgsl,
         });
 
         const pipeline = device.createRenderPipeline({
@@ -72,7 +74,5 @@ onMounted(() => {
         device.queue.submit([commandBuffer]);
     }
 });
-
-
 
 </script>
