@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { computed, ref, shallowRef } from 'vue'
+import { computed, shallowRef } from 'vue'
 
 export const useWebGPUStore = defineStore('webgpu', () => {
     const gpudevice = shallowRef(null);

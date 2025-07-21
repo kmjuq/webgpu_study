@@ -10,7 +10,6 @@ const routes = computed(() =>
     !route.meta?.hidden === true
   )
 );
-console.log("router", router)
 
 const webgpuStore = useWebGPUStore();
 const { initWebGPU, destroyWebGPU } = webgpuStore
