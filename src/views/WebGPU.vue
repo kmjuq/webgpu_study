@@ -4,7 +4,6 @@ import HelloGPGPU from '@/components/HelloGPGPU.vue';
 import { useWebGPUStore } from '@/stores/WebGPUStore';
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
-import { isEmpty } from 'lodash-es';
 
 const router = useRouter()
 
@@ -17,6 +16,8 @@ if (!isWebGPUSupported.value) {
 </script>
 
 <template>
-    <HelloWebGPU />
-    <HelloGPGPU />
+    <div class="flex">
+        <HelloWebGPU />
+        <HelloGPGPU />
+    </div>
 </template>
