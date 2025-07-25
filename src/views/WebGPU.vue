@@ -4,6 +4,8 @@ import HelloGPGPU from '@/components/HelloGPGPU.vue';
 import { useWebGPUStore } from '@/stores/WebGPUStore';
 import { storeToRefs } from 'pinia'
 import { useRouter } from 'vue-router'
+import ChessboardTriangle from '@/components/ChessboardTriangle.vue';
+import RGBTriangle from '@/components/RGBTriangle.vue';
 
 const router = useRouter()
 
@@ -16,8 +18,10 @@ if (!isWebGPUSupported.value) {
 </script>
 
 <template>
-    <div class="flex">
+    <div class="flex gap-1 p-1 m-1">
         <HelloWebGPU />
         <HelloGPGPU />
+        <RGBTriangle />
+        <ChessboardTriangle />
     </div>
 </template>
